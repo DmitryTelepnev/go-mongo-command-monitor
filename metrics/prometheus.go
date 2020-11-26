@@ -14,6 +14,7 @@ type prometheus struct {
 	QueryDurationHisto   *prometheusClient.HistogramVec
 }
 
+//NewPrometheus is the prometheus metric collector constructor
 func NewPrometheus(appName string) *prometheus {
 	startedQueryCounter := prometheusClient.NewCounterVec(prometheusClient.CounterOpts{
 		Name: "mongo_started_query_counter",

@@ -1,4 +1,4 @@
-package mongo_command_monitor
+package commandMonitor
 
 import (
 	"context"
@@ -9,6 +9,7 @@ import (
 	driverEvent "go.mongodb.org/mongo-driver/event"
 )
 
+// GetCommandMonitor is mongo command monitor constructor
 func GetCommandMonitor(metrics metrics.Metrics) *driverEvent.CommandMonitor {
 	queryEventStorage := event.NewQueryEventInmemoryStorage()
 
