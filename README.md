@@ -1,6 +1,6 @@
 # MongoDB Command monitor
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/DmitriyTelepnev/mongo-command-monitor)](https://goreportcard.com/report/github.com/DmitriyTelepnev/mongo-command-monitor)
+[![Go Report Card](https://goreportcard.com/badge/github.com/DmitryTelepnev/mongo-command-monitor)](https://goreportcard.com/report/github.com/DmitryTelepnev/mongo-command-monitor)
 
 Lib for golang-mongodb driver for command monitoring
 
