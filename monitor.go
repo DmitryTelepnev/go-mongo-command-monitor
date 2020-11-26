@@ -1,4 +1,4 @@
-package mongodb_command_monitor
+package mongo_command_monitor
 
 import (
 	"context"
