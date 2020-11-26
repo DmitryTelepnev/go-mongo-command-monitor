@@ -8,6 +8,7 @@ import (
 	"time"
 )
 
+//Query contains info about mongo query command
 type Query struct {
 	Command      string
 	Database     string
@@ -19,12 +20,14 @@ type Query struct {
 	CompletedAt  time.Time
 }
 
+//Unique query key for determining QueryStartEvent and QueryFinishedEvent
 func (q *Query) Key() string {
 	var str strings.Builder
 	str.WriteString(q.Command + "-" + q.ConnectionID + "-" + strconv.FormatInt(q.RequestID, 10))
 	return str.String()
 }
 
+//QueryEventInmemoryStorage contains processing queries info
 type QueryEventInmemoryStorage struct {
 	sync.RWMutex
 
@@ -33,6 +36,7 @@ type QueryEventInmemoryStorage struct {
 
 const queryDefaultSize = 1000
 
+//NewQueryEventInmemoryStorage is query event collector constructor
 func NewQueryEventInmemoryStorage() *QueryEventInmemoryStorage {
 	return &QueryEventInmemoryStorage{
 		queries: make(map[string]*Query, queryDefaultSize),

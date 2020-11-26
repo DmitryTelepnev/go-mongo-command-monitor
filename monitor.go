@@ -1,4 +1,4 @@
-package commandMonitor
+package monitor
 
 import (
 	"context"

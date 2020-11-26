@@ -14,7 +14,7 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/readpref"
 )
 
-type Options struct {
+type options struct {
 	AppName           string
 	Hosts             []string
 	ConnectionTimeout time.Duration
@@ -24,14 +24,14 @@ type Options struct {
 }
 
 func main() {
-	options := Options{
+	options := options{
 		Hosts:             []string{"examples_mongo-db_1:27017"},
 		ReadPreference:    "primary",
 		ConnectionTimeout: 5 * time.Second,
 		MinPoolSize:       2,
 		MaxPoolSize:       4,
 	}
-	mongo, err := MongoConnect(options)
+	mongo, err := mongoConnect(options)
 	panicOnErr(err)
 
 	type A struct {
@@ -76,7 +76,7 @@ func getPoolMonitor() *event.PoolMonitor {
 	}}
 }
 
-func MongoConnect(options Options) (*driver.Client, error) {
+func mongoConnect(options options) (*driver.Client, error) {
 	connectCtx, connectCancel := context.WithTimeout(context.Background(), options.ConnectionTimeout)
 	opts := driverOpts.Client()
 	opts.SetHosts(options.Hosts)
