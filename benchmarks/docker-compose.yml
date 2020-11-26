@@ -1,0 +1,27 @@
+version: "3.5"
+services:
+  mongo-db-with-monitor:
+    image: "mongo:4.4"
+    ports:
+      - "27037:27017"
+    logging:
+      driver: none
+
+  mongo-db-without-monitor:
+    image: "mongo:4.4"
+    ports:
+      - "27027:27017"
+    logging:
+      driver: none
+
+  benchmark:
+    image: golang:1.14-stretch
+    volumes:
+      - "../:/app"
+    working_dir: /app
+    command: sh -c "
+        go mod vendor && go test -bench=. -benchmem -run=^Bench* --count 20 ./benchmarks
+      "
+    depends_on:
+      - mongo-db-with-monitor
+      - mongo-db-without-monitor
