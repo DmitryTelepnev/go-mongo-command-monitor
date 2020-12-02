@@ -2,14 +2,14 @@
 
 [![Go Report Card](https://goreportcard.com/badge/github.com/DmitryTelepnev/mongo-command-monitor)](https://goreportcard.com/report/github.com/DmitryTelepnev/mongo-command-monitor)
 
-Lib for golang-mongodb driver for command monitoring
+Lib for GoLang MongoDB driver for command monitoring
 
 Implements:
 * total number of started queries with "app", "database", "collection", "command" labels
 * total number of finished queries with "app", "database", "collection", "command" labels
 * mongo query duration with "app", "database", "collection", "command" labels
 
-Also, you can implement custom metric collector by Metrics interface
+Also, you can implement a custom metric collector by the Metrics interface.
 
 ## Import into your project
 
