@@ -68,7 +68,7 @@ func TestInmemoryQueryMetricStorage_Extract(t *testing.T) {
 
 	query, err = storage.Extract(queryStart.Key())
 	assert.Errorf(t, err, fmt.Sprintf("query by key #%s not exists", queryStart.Key()))
-	assert.Equal(t, &Query{}, query)
+	assert.Nil(t, query)
 }
 
 func BenchmarkInmemoryQueryMetricStorage_Upsert(b *testing.B) {

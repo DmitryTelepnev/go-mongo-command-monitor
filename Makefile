@@ -15,6 +15,6 @@ endif
 
 .PHONY: test
 test:
-	GO111MODULE=on go test -mod vendor -bench=. -benchmem -coverpkg=./... -covermode=count -coverprofile=coverage.out -v $(go list ./... | grep -v -e benchmark -e example) && \
+	GO111MODULE=on go test -mod vendor -bench=. -benchmem -coverpkg=./... -covermode=count -coverprofile=coverage.out -v $(go list ./... | grep -v -e benchmarks/ -e examples/ -e metrics/) && \
     GO111MODULE=${GO111MODULE} go tool cover -func=coverage.out && \
     GO111MODULE=on go tool cover -html=coverage.out -o=coverage.html
